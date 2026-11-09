@@ -1,0 +1,44 @@
+/* ============================================================
+   VERSÃO SEM GESTALT — ETAPA 1: cores e fontes
+   As escolhas foram feitas elemento por elemento, sem um
+   sistema: várias fontes, várias cores e nenhuma cor
+   reservada para ações.
+   ============================================================ */
+:root {
+  --bege: #F4ECD6;
+  --texto: #6E685C;
+  --vermelho: #C0392B;
+  --azul: #2E86C1;
+  --roxo: #8E44AD;
+  --laranja: #E67E22;
+  --verde: #27AE60;
+  --amarelo: #F1C40F;
+  --rosa: #F5B7B1;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  color: var(--texto);
+  background-color: var(--bege);
+  background-image: repeating-linear-gradient(135deg, rgba(230, 126, 34, .10) 0 14px, rgba(46, 134, 193, .08) 14px 28px);
+  font-family: Verdana, "DejaVu Sans", sans-serif;
+  font-size: 15px;
+}
+h1 { font-family: "Courier New", Courier, monospace; color: var(--vermelho); text-transform: uppercase; }
+h2 { font-family: "Times New Roman", "Liberation Serif", serif; font-style: italic; color: var(--azul); }
+h3 { font-family: "Trebuchet MS", "Liberation Sans", Arial, sans-serif; color: var(--roxo); }
+a { color: var(--texto); }
+.menu a { color: var(--roxo); font-family: "Courier New", Courier, monospace; }
+.marca-nome { font-family: "Times New Roman", "Liberation Serif", serif; color: var(--laranja); }
+.logo { display: none; }
+.sobretitulo { color: var(--verde); font-family: "Courier New", Courier, monospace; }
+.forno-hora { color: var(--vermelho); }
+.produto-cat { color: var(--laranja); font-family: "Courier New", Courier, monospace; }
+.produto-preco { color: var(--verde); font-family: "Times New Roman", "Liberation Serif", serif; }
+.produto--cafes .produto-icone { color: #6E4B2A; }
+.produto--doces .produto-icone { color: #D35400; }
+.produto--salgados .produto-icone { color: #7F8C8D; }
+.erro { color: var(--vermelho); }
+legend { color: var(--roxo); }
+.rodape h2, .rodape h3 { color: var(--azul); }

@@ -1,0 +1,120 @@
+/* ============================================================
+   ETAPA 2 — SEMELHANÇA e REGIÃO COMUM
+   Elementos de mesma função recebem a mesma aparência;
+   conteúdos relacionados ficam dentro de um mesmo limite.
+   ============================================================ */
+
+/* Semelhança: todo elemento clicável de ação usa o mesmo
+   formato, raio e família de cor */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 var(--e5);
+  border-radius: 8px; border: 2px solid var(--acento);
+  font: 600 .9375rem/1 var(--f-texto);
+  text-decoration: none; cursor: pointer;
+}
+.btn-primario { background: var(--acento); color: #fff; }
+.btn-secundario { background: transparent; color: var(--acento); }
+.btn-adicionar { min-height: 38px; padding: 0 var(--e4); background: transparent; color: var(--acento); }
+.btn-largo { width: 100%; }
+
+/* O botão do pedido no topo segue a mesma linguagem */
+.btn-pedido {
+  display: inline-flex; align-items: center; gap: var(--e2);
+  min-height: 44px; padding: 0 var(--e3) 0 var(--e4);
+  border-radius: 8px; border: 2px solid var(--acento);
+  background: var(--acento); color: #fff;
+  font: 600 .9375rem/1 var(--f-texto); cursor: pointer;
+}
+.contador {
+  display: inline-grid; place-items: center;
+  min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px;
+  background: #fff; color: var(--acento);
+  font-size: .8125rem; font-variant-numeric: tabular-nums;
+}
+
+/* Filtros: todos iguais entre si e diferentes dos botões de ação */
+.filtro {
+  min-height: 38px; padding: 0 var(--e4);
+  border-radius: 999px; border: 1px solid var(--linha);
+  background: var(--superficie); color: var(--tinta);
+  font: 500 .9375rem/1 var(--f-texto); cursor: pointer;
+}
+.filtro.ativo { background: var(--tinta); border-color: var(--tinta); color: #fff; }
+
+/* Região comum: cada produto é um cartão que reúne ícone,
+   nome, descrição, preço e botão */
+.produto {
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 12px;
+  padding: var(--e5);
+}
+
+/* Semelhança por categoria: a mesma cor de fundo no ícone
+   identifica cafés, doces e salgados */
+.produto-icone { display: grid; place-items: center; border-radius: 10px; color: var(--icone); padding: 10px; }
+.produto--cafes .produto-icone { background: var(--cafe); }
+.produto--doces .produto-icone { background: var(--doce); }
+.produto--salgados .produto-icone { background: var(--salgado); }
+
+/* Região comum no herói: as fornadas do dia formam um bloco próprio */
+.forno {
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 12px;
+  padding: var(--e6);
+}
+.forno-lista li { padding-bottom: var(--e3); border-bottom: 1px solid var(--linha); }
+.forno-lista li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+/* Formulário: cada grupo temático fica dentro de um quadro */
+.form {
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 12px;
+  padding: var(--e6);
+}
+.campo input, .campo select, .campo textarea {
+  min-height: 44px; padding: var(--e2) var(--e3);
+  border: 1px solid #A9B5AE; border-radius: 8px;
+  background: var(--superficie); color: var(--tinta);
+}
+.campo textarea { min-height: 88px; resize: vertical; }
+
+/* Diferenciais com o mesmo tratamento entre si */
+.diferenciais li { border-top: 3px solid var(--tinta); padding-top: var(--e4); }
+
+/* Rodapé como faixa própria */
+.rodape { background: var(--superficie); border-top: 1px solid var(--linha); }
+
+/* Painel do pedido: região delimitada com itens de mesmo formato */
+.painel {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 40;
+  width: min(420px, 100%);
+  display: flex; flex-direction: column;
+  background: var(--superficie);
+  padding: calc(var(--e5) + env(safe-area-inset-top, 0px)) max(var(--e5), env(safe-area-inset-right, 0px)) calc(var(--e5) + env(safe-area-inset-bottom, 0px)) var(--e5);
+}
+.painel-cab { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--e5); }
+.painel-cab h2 { font-size: 1.5rem; }
+.fechar { background: none; border: 0; color: var(--acento); font: 600 .9375rem var(--f-texto); cursor: pointer; padding: var(--e2); }
+.itens { display: grid; gap: var(--e3); overflow-y: auto; flex: 1; align-content: start; }
+.item {
+  display: grid; grid-template-columns: 1fr auto; gap: var(--e2) var(--e4);
+  padding: var(--e4); border: 1px solid var(--linha); border-radius: 10px;
+}
+.item-info { display: grid; gap: 2px; }
+.item-nome { font-weight: 600; }
+.item-unit { font-size: .8125rem; color: var(--suave); }
+.item-qtd { display: flex; align-items: center; gap: var(--e2); }
+.qtd-btn {
+  width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--linha);
+  background: var(--superficie); color: var(--tinta); font-size: 1.125rem; cursor: pointer;
+}
+.qtd-num { min-width: 1.5em; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+.item-subtotal { font-weight: 600; font-variant-numeric: tabular-nums; }
+.item-remover { justify-self: end; background: none; border: 0; padding: 0; color: var(--suave); text-decoration: underline; cursor: pointer; font: .8125rem var(--f-texto); }
+.pedido-vazio { color: var(--suave); }
+.painel-rodape { display: grid; gap: var(--e4); padding-top: var(--e5); border-top: 1px solid var(--linha); margin-top: var(--e4); }
+.total { display: flex; justify-content: space-between; font-weight: 600; font-size: 1.125rem; font-variant-numeric: tabular-nums; }

@@ -1,0 +1,88 @@
+/* ============================================================
+   ETAPA 3 — FIGURA E FUNDO, HIERARQUIA, DESTINO COMUM
+   e PREGNÂNCIA (acabamento e estados de interação)
+   ============================================================ */
+
+/* Figura e fundo: cabeçalho fixo destacado do conteúdo que rola */
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; z-index: 31;
+  height: env(safe-area-inset-top, 0px); background: rgba(238, 242, 239, .94);
+}
+.topo {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
+  background: rgba(238, 242, 239, .94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linha);
+}
+
+/* Hierarquia: o título principal domina; o sobretítulo e o
+   texto de apoio recuam em tamanho e cor */
+.hero h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); letter-spacing: -.01em; }
+.sobretitulo { color: var(--acento); }
+.forno { box-shadow: 0 1px 2px rgba(22, 32, 27, .06), 0 12px 32px -16px rgba(22, 32, 27, .18); }
+.forno-titulo::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: #C8572E; margin-right: var(--e2); vertical-align: middle;
+}
+
+/* Interação: estados visíveis e consistentes */
+.btn, .filtro, .btn-pedido, .qtd-btn { transition: background-color .15s, color .15s, border-color .15s, transform .15s; }
+.btn-primario:hover, .btn-pedido:hover { background: var(--acento-escuro); border-color: var(--acento-escuro); }
+.btn-secundario:hover, .btn-adicionar:hover { background: var(--acento-claro); }
+.filtro:hover { border-color: var(--tinta); }
+.menu a { padding-block: var(--e1); border-bottom: 2px solid transparent; }
+.menu a:hover { border-bottom-color: var(--acento); }
+.produto { transition: border-color .15s, box-shadow .15s; }
+.produto:hover { border-color: #A9B5AE; box-shadow: 0 10px 24px -18px rgba(22, 32, 27, .4); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+:focus-visible { outline: 3px solid #E2A33B; outline-offset: 2px; }
+
+/* Destino comum: quando um item é adicionado, botão do topo
+   e contador reagem juntos, ligando a ação ao pedido */
+@keyframes pulsar {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.35); background: #E2A33B; color: var(--tinta); }
+  100% { transform: scale(1); }
+}
+.contador.pulsar { animation: pulsar .45s ease-out; }
+
+/* Figura e fundo: o painel do pedido vira a figura e o
+   restante da página recua para o fundo escurecido */
+.veu { position: fixed; inset: 0; z-index: 35; background: rgba(16, 24, 20, .5); }
+.painel { box-shadow: -24px 0 48px -24px rgba(0, 0, 0, .35); }
+@media (prefers-reduced-motion: no-preference) {
+  .painel:not([hidden]) { animation: entrar .22s ease-out; }
+  @keyframes entrar { from { transform: translateX(24px); opacity: .6; } to { transform: none; opacity: 1; } }
+}
+
+/* Mensagens: sucesso em verde, erro em vermelho, sempre junto
+   do elemento a que se referem */
+.campo.com-erro input, .campo.com-erro select { border-color: var(--erro); background: #FDF3F2; }
+.reserva-ok, .pedido-ok {
+  padding: var(--e3) var(--e4); border-radius: 8px;
+  background: var(--acento-claro); color: var(--acento-escuro); font-weight: 500;
+}
+
+/* Aviso flutuante próximo ao botão do pedido (proximidade) */
+.aviso {
+  position: fixed; z-index: 45;
+  top: calc(76px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px));
+  max-width: min(340px, calc(100% - 32px));
+  padding: var(--e3) var(--e4); border-radius: 8px;
+  background: var(--tinta); color: #fff; font-size: .9375rem;
+  opacity: 0; transform: translateY(-6px); pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.aviso.visivel { opacity: 1; transform: none; }
+
+/* Pregnância: limita a largura dos textos e mantém tudo
+   alinhado à mesma grade */
+.secao-cab p, .hero-lead { max-width: 36em; }
+.sobre .secao-in { border-top: 1px solid var(--linha); padding-top: var(--e8); }
+.secao.sobre { padding-top: var(--e8); }
+
+@media (max-width: 560px) {
+  .form, .forno { padding: var(--e5); }
+  .produto-rodape .btn-adicionar { min-height: 44px; }
+  .aviso { top: auto; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+}

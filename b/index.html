@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moenda Café</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Site fictício da Moenda Café, desenvolvido para um TCC sobre Gestalt no design de UX/UI.">
+
+<link rel="stylesheet" href="css/1-cores-fontes.css">
+<link rel="stylesheet" href="css/2-layout.css">
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zb5j0ti034");
+    clarity("set", "versao", "B");
+</script>
+</head>
+<body>
+
+<a class="pular" href="#cardapio">Pular para o cardápio</a>
+
+<header class="topo">
+  <div class="topo-in">
+    <a class="marca" href="#inicio" aria-label="Moenda Café, início">
+      <svg class="logo" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M31 9 A15 15 0 1 0 35 23" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+        <ellipse cx="20" cy="20" rx="5.5" ry="8" transform="rotate(28 20 20)" fill="currentColor"/>
+        <path class="logo-fenda" d="M17.5 13.5 C21 17 19 22 22.5 26.5" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="marca-nome">Moenda Café</span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#reserva">Reservas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button type="button" class="btn-pedido" id="abrir-pedido" aria-controls="painel-pedido" aria-expanded="false">
+      Seu pedido <span class="contador" id="contador">0</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="inicio" class="hero">
+    <div class="hero-in">
+      <div class="hero-texto">
+        <p class="sobretitulo">Cafeteria de bairro desde 2019</p>
+        <h1>Café coado na hora e pão saído do forno às 7h</h1>
+        <p class="hero-lead">Trabalhamos com grãos de pequenos produtores do Sul de Minas, torrados em lotes de 5 kg a cada 15 dias. Peça pelo site e retire no balcão.</p>
+        <div class="hero-acoes">
+          <a class="btn btn-primario" href="#cardapio">Ver cardápio</a>
+          <a class="btn btn-secundario" href="#reserva">Reservar mesa</a>
+        </div>
+      </div>
+      <aside class="forno" aria-label="Fornadas de hoje">
+        <h2 class="forno-titulo">Hoje no forno</h2>
+        <ol class="forno-lista">
+          <li><span class="forno-hora">07:00</span> <span>Pão de fermentação natural</span></li>
+          <li><span class="forno-hora">09:30</span> <span>Bolo de fubá com goiabada</span></li>
+          <li><span class="forno-hora">11:00</span> <span>Croissant de presunto e queijo</span></li>
+          <li><span class="forno-hora">15:00</span> <span>Pão de queijo</span></li>
+        </ol>
+        <p class="forno-nota">Torra atual: lote 38, Fazenda Santa Inês, 1.150 m de altitude.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="cardapio" class="secao cardapio">
+    <div class="secao-in">
+      <div class="secao-cab">
+        <h2>Cardápio</h2>
+        <p>Escolha os itens e monte seu pedido para retirar no balcão.</p>
+      </div>
+      <div class="filtros" role="group" aria-label="Filtrar cardápio">
+        <button type="button" class="filtro ativo" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button type="button" class="filtro" data-filtro="cafes" aria-pressed="false">Cafés</button>
+        <button type="button" class="filtro" data-filtro="doces" aria-pressed="false">Doces</button>
+        <button type="button" class="filtro" data-filtro="salgados" aria-pressed="false">Salgados</button>
+      </div>
+      <ul class="produtos" id="produtos"></ul>
+    </div>
+  </section>
+
+  <section id="sobre" class="secao sobre">
+    <div class="secao-in">
+      <div class="secao-cab">
+        <h2>Sobre a Moenda</h2>
+        <p>Uma cafeteria pequena, com doze mesas, onde tudo é preparado no balcão à vista do cliente.</p>
+      </div>
+      <ul class="diferenciais">
+        <li>
+          <h3>Grãos rastreados</h3>
+          <p>Cada pacote informa a fazenda, a altitude e a data da torra.</p>
+        </li>
+        <li>
+          <h3>Fermentação natural</h3>
+          <p>Os pães descansam 24 horas antes de ir ao forno, todos feitos na casa.</p>
+        </li>
+        <li>
+          <h3>Lugar para ficar</h3>
+          <p>Mesas com tomada e wi-fi para quem trabalha ou estuda por aqui.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reserva" class="secao reserva">
+    <div class="secao-in">
+      <div class="secao-cab">
+        <h2>Reserve uma mesa</h2>
+        <p>Atendemos reservas de segunda a sábado. Domingo a casa fica fechada.</p>
+      </div>
+      <form id="form-reserva" class="form" novalidate data-clarity-mask="True">
+        <fieldset class="grupo">
+          <legend>Seus dados</legend>
+          <div class="campo">
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="erro-nome">
+            <p class="erro" id="erro-nome"></p>
+          </div>
+          <div class="campo">
+            <label for="telefone">Telefone com DDD</label>
+            <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 98765-4321" aria-describedby="erro-telefone">
+            <p class="erro" id="erro-telefone"></p>
+          </div>
+        </fieldset>
+        <fieldset class="grupo">
+          <legend>Sua visita</legend>
+          <div class="campo">
+            <label for="data">Data</label>
+            <input id="data" name="data" type="date" aria-describedby="erro-data">
+            <p class="erro" id="erro-data"></p>
+          </div>
+          <div class="campo">
+            <label for="horario">Horário</label>
+            <select id="horario" name="horario" aria-describedby="erro-horario">
+              <option value="">Selecione</option>
+              <option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option>
+              <option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option>
+              <option>16:00</option><option>17:00</option><option>18:00</option>
+            </select>
+            <p class="erro" id="erro-horario"></p>
+          </div>
+          <div class="campo">
+            <label for="pessoas">Pessoas</label>
+            <select id="pessoas" name="pessoas" aria-describedby="erro-pessoas">
+              <option value="">Selecione</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+            </select>
+            <p class="erro" id="erro-pessoas"></p>
+          </div>
+        </fieldset>
+        <div class="campo campo-obs">
+          <label for="obs">Observações (opcional)</label>
+          <textarea id="obs" name="obs" rows="3" placeholder="Ex.: aniversário, cadeira para criança"></textarea>
+        </div>
+        <div class="form-acoes">
+          <button type="submit" class="btn btn-primario">Confirmar reserva</button>
+        </div>
+        <p class="reserva-ok" id="reserva-ok" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer id="contato" class="rodape">
+  <div class="rodape-in">
+    <div class="rodape-col">
+      <h2>Moenda Café</h2>
+      <p>Rua das Laranjeiras, 214, Centro</p>
+    </div>
+    <div class="rodape-col">
+      <h3>Contato</h3>
+      <p>(11) 3456-7890</p>
+      <p>ola@moendacafe.com.br</p>
+    </div>
+    <div class="rodape-col">
+      <h3>Horário</h3>
+      <p>Segunda a sexta, 7h às 19h</p>
+      <p>Sábado, 8h às 14h</p>
+    </div>
+    <p class="rodape-nota">Site fictício criado para fins acadêmicos. Versão B.</p>
+  </div>
+</footer>
+
+<div class="veu" id="veu" hidden></div>
+<aside class="painel" id="painel-pedido" aria-label="Seu pedido" hidden>
+  <div class="painel-cab">
+    <h2>Seu pedido</h2>
+    <button type="button" class="fechar" id="fechar-pedido">Fechar</button>
+  </div>
+  <p class="pedido-vazio" id="pedido-vazio">Seu pedido está vazio. Adicione itens pelo cardápio.</p>
+  <ul class="itens" id="itens-pedido"></ul>
+  <div class="painel-rodape">
+    <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
+    <button type="button" class="btn btn-primario btn-largo" id="finalizar">Finalizar pedido</button>
+    <p class="pedido-ok" id="pedido-ok" role="status" hidden></p>
+  </div>
+</aside>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+/* ============================================================
+   VERSÃO SEM GESTALT — ETAPA 2: layout, botões e interações
+   Mesmo conteúdo e mesmas funções do outro site, mas com
+   espaçamentos iguais para tudo, alinhamentos variados,
+   botões diferentes entre si e nenhum agrupamento visual.
+   ============================================================ */
+p, ul, ol { margin: 0 0 28px; }
+ul, ol { padding-left: 0; list-style: none; }
+h1, h2, h3 { margin: 0 0 28px; }
+img, svg { max-width: 100%; }
+.pular { position: absolute; left: -999px; }
+.pular:focus { left: 8px; top: 8px; background: #fff; }
+
+/* Cabeçalho: menu espalhado por toda a largura e pedido sozinho embaixo */
+.topo-in { padding: 20px max(16px, env(safe-area-inset-left, 0px)) 20px max(16px, env(safe-area-inset-right, 0px)); text-align: center; }
+.marca { display: block; margin-bottom: 28px; text-decoration: none; }
+.marca-nome { font-size: 30px; }
+.menu { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: var(--rosa); padding: 10px 20px; margin-bottom: 28px; }
+.menu a { font-size: 13px; text-transform: uppercase; }
+.btn-pedido {
+  font-family: "Trebuchet MS", "Liberation Sans", Arial, sans-serif; font-size: 13px;
+  background: var(--amarelo); color: #5D4A00; border: 1px solid #B7950B; padding: 6px 10px; cursor: pointer;
+}
+.contador::before { content: "("; }
+.contador::after { content: ")"; }
+
+/* Herói: título centralizado, texto à direita e botões de estilos diferentes */
+.hero-in { padding: 20px max(16px, env(safe-area-inset-left, 0px)) 20px max(16px, env(safe-area-inset-right, 0px)); }
+.hero-texto { text-align: center; }
+.hero h1 { font-size: 34px; letter-spacing: 3px; }
+.hero-lead { text-align: right; font-size: 14px; }
+.hero-acoes { margin-bottom: 28px; }
+.btn { display: inline-block; margin: 0 6px 6px 0; cursor: pointer; text-decoration: none; font-size: 14px; }
+.btn-primario {
+  background: var(--laranja); color: #fff; border: 0; border-radius: 30px; padding: 12px 22px;
+  font-family: "Comic Sans MS", "Trebuchet MS", cursive;
+}
+.btn-secundario {
+  background: var(--azul); color: #fff; border: 3px double #fff; padding: 10px 26px;
+  font-family: Georgia, "Liberation Serif", serif; box-shadow: 4px 4px 0 var(--roxo);
+}
+.forno { border: 2px dashed var(--vermelho); padding: 20px; text-align: center; }
+.forno-lista li { margin-bottom: 28px; }
+.forno-nota { font-size: 11px; font-style: italic; }
+
+/* Seções sem diferença de espaçamento entre blocos e dentro deles */
+.secao-in { padding: 28px max(16px, env(safe-area-inset-left, 0px)) 28px max(16px, env(safe-area-inset-right, 0px)); }
+.secao-cab h2 { font-size: 30px; }
+
+/* Filtros parecem links de texto, diferentes dos outros botões */
+.filtros { margin-bottom: 28px; text-align: right; }
+.filtro {
+  background: none; border: 0; padding: 0 6px; cursor: pointer;
+  color: var(--azul); text-decoration: underline; font-family: Verdana, "DejaVu Sans", sans-serif; font-size: 13px;
+}
+.filtro.ativo { color: var(--vermelho); font-weight: bold; text-decoration: none; }
+
+/* Produtos: lista corrida, sem limites; preço longe do nome e
+   o mesmo espaço entre partes de um item e entre itens */
+.produto { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 28px; margin-bottom: 28px; }
+.produto-icone { grid-row: span 2; width: 40px; }
+.produto:nth-child(3n+2) .produto-icone { width: 72px; }
+.produto:nth-child(3n) .produto-icone { width: 28px; }
+.produto-icone svg { width: 100%; height: auto; }
+.produto-texto { display: contents; }
+.produto-cat { grid-column: 2; display: block; margin-bottom: 28px; font-size: 11px; }
+.produto-nome { grid-column: 2; font-size: 17px; }
+.produto-desc { grid-column: 2; font-size: 13px; }
+.produto-rodape { display: contents; }
+.produto-preco { grid-column: 3; grid-row: 1; font-size: 20px; text-align: right; }
+.btn-adicionar { grid-column: 1; justify-self: start; font-size: 12px; padding: 5px 10px; border: 1px solid #999; background: #EEE; color: #333; border-radius: 0; font-family: Arial, "Liberation Sans", sans-serif; }
+.produto:nth-child(4n+1) .btn-adicionar { background: var(--vermelho); color: #fff; border-color: var(--vermelho); }
+.produto:nth-child(4n+2) .btn-adicionar { background: var(--verde); color: #fff; border-radius: 20px; }
+.produto:nth-child(4n+3) .btn-adicionar { background: none; border: 0; color: var(--azul); text-decoration: underline; }
+
+/* Diferenciais com alinhamentos alternados */
+.diferenciais li:nth-child(1) { text-align: left; }
+.diferenciais li:nth-child(2) { text-align: center; }
+.diferenciais li:nth-child(3) { text-align: right; }
+
+/* Formulário: rótulo afastado do próprio campo e colado no
+   campo anterior; larguras diferentes; grupos sem destaque */
+.form { max-width: 900px; }
+.grupo { border: 0; padding: 0; margin: 0; }
+.grupo legend { font-size: 11px; text-transform: uppercase; margin-bottom: 6px; }
+.campo { margin-bottom: 6px; }
+.campo label { display: block; margin-top: 6px; margin-bottom: 30px; font-size: 13px; }
+.campo input, .campo select, .campo textarea { font-size: 14px; padding: 4px; border: 1px solid #BBB; background: #FFFDF5; color: #444; }
+#nome { width: 90%; }
+#telefone { width: 40%; }
+#data { width: 60%; }
+#horario { width: 25%; }
+#pessoas { width: 75%; }
+#obs { width: 100%; }
+.erro { margin: 18px 0 0; font-size: 11px; }
+.erro:empty { display: none; }
+.form-acoes { text-align: center; margin-top: 28px; }
+.reserva-ok, .pedido-ok { font-size: 12px; color: var(--verde); }
+
+/* Rodapé centralizado, sem separação do restante */
+.rodape-in { padding: 28px max(16px, env(safe-area-inset-left, 0px)) 28px max(16px, env(safe-area-inset-right, 0px)); text-align: center; }
+.rodape-nota { font-size: 10px; }
+
+/* Painel do pedido: aparece no canto inferior esquerdo, com o
+   mesmo fundo da página e sem escurecer o restante */
+.painel {
+  position: fixed; left: max(10px, env(safe-area-inset-left, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); z-index: 40;
+  width: min(330px, calc(100% - 20px)); max-height: 70vh; overflow-y: auto;
+  background-color: var(--bege); background-image: inherit; border: 1px dotted #999; padding: 12px;
+}
+.painel-cab h2 { font-size: 18px; }
+.fechar { background: none; border: 0; color: var(--vermelho); cursor: pointer; font-size: 11px; float: right; }
+.item { margin-bottom: 16px; font-size: 13px; }
+.item-info span { display: block; }
+.item-unit { font-size: 10px; }
+.qtd-btn { font-size: 11px; background: #DDD; border: 1px solid #AAA; cursor: pointer; }
+.item-subtotal { display: block; text-align: right; color: var(--verde); }
+.item-remover { background: none; border: 0; color: var(--vermelho); cursor: pointer; font-size: 10px; }
+.total { margin: 12px 0; text-align: center; font-weight: bold; }
+.btn-largo { display: block; margin: 0 auto 10px; }
+.btn:disabled { opacity: .5; }
+
+/* Aviso aparece longe do botão que o gerou */
+.aviso {
+  position: fixed; left: max(10px, env(safe-area-inset-left, 0px)); top: calc(10px + env(safe-area-inset-top, 0px)); z-index: 45;
+  background: var(--amarelo); color: #5D4A00; font-size: 11px; padding: 4px 8px; display: none;
+}
+.aviso.visivel { display: block; }
